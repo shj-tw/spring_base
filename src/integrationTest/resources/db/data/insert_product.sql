@@ -1,3 +1,3 @@
-INSERT INTO product values ('1','product-1','10','VALID'),
-                           ('2','product-2',null,'VALID'),
-                           ('3','product-3','10','INVALID');
+INSERT INTO product values ('1','test-product1','10','VALID','2023-08-09 21:31:14','2022-08-09 21:31:14'),
+                           ('2','test-product2',null,'VALID','2023-08-09 21:31:14','2022-08-09 21:31:14'),
+                           ('3','test-product3','10','INVALID','2023-08-09 21:31:14','2022-08-09 21:31:14');
