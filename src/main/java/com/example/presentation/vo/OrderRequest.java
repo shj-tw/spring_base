@@ -8,7 +8,7 @@ import java.util.List;
 @Getter
 @Setter
 public class OrderRequest {
-    private List<Product> products;
+    private List<OrderItemDto> orderItemDtos;
 
 }
 

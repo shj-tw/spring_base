@@ -2,6 +2,7 @@ package com.example.infrastructure.persistence.repository.domain;
 
 import com.example.domain.entity.Order;
 import com.example.domain.entity.OrderItem;
+import com.example.domain.entity.OrderStatus;
 import com.example.infrastructure.persistence.assembler.OrderDataMapper;
 import com.example.infrastructure.persistence.entity.OrderPo;
 import com.example.infrastructure.persistence.repository.JpaOrderItemRepository;
@@ -43,7 +44,7 @@ class OrderDomainRepositoryTest {
         Order savedOrder = orderDomainRepository.save(order);
 
         assertThat(savedOrder.getId()).isEqualTo("1");
-        assertThat(savedOrder.getStatus()).isEqualTo("Created");
+        assertThat(savedOrder.getStatus()).isEqualTo(OrderStatus.CREATED);
         assertThat(savedOrder.getCustomerId()).isEqualTo("2");
         assertThat(savedOrder.getTotalPrice()).isEqualTo("12.34");
 
@@ -59,7 +60,7 @@ class OrderDomainRepositoryTest {
         return Order.builder()
                 .id("1")
                 .customerId("2")
-                .status("Created")
+                .status(OrderStatus.CREATED)
                 .totalPrice("12.34")
                 .orderItems(List.of(getMockOrderItem()))
                 .build();
@@ -69,6 +70,8 @@ class OrderDomainRepositoryTest {
         return OrderItem.builder()
                 .id("3")
                 .productId("1")
+                .productName("product name")
+                .price("5.50")
                 .quantity(5)
                 .build();
     }

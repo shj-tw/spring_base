@@ -1,4 +1,4 @@
-package com.example.presentation.vo;
+package com.example.domain.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

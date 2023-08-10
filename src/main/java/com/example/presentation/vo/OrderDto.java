@@ -12,7 +12,7 @@ import lombok.Setter;
 public class OrderDto {
     private String id;
     private String orderPrice;
-    private OrderStatus orderStatus;
+    private String orderStatus;
 //    private List<Product> products;
 
 }

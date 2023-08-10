@@ -3,7 +3,6 @@ package com.example.presentation.facade;
 import com.example.application.service.OrderApplicationService;
 import com.example.presentation.vo.OrderDto;
 import com.example.presentation.vo.OrderRequest;
-import com.example.presentation.vo.OrderStatus;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
