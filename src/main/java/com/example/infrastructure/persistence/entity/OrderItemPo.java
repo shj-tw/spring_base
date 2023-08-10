@@ -26,6 +26,10 @@ public class OrderItemPo {
 
     private String productId;
 
+    private String productName;
+
+    private String price;
+
     private String orderId;
 
     private Integer quantity;

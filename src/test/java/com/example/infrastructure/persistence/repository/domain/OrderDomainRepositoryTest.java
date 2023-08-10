@@ -52,6 +52,8 @@ class OrderDomainRepositoryTest {
         OrderItem firstOrderItem = savedOrder.getOrderItems().get(0);
         assertThat(firstOrderItem.getId()).isEqualTo("3");
         assertThat(firstOrderItem.getOrderId()).isEqualTo("1");
+        assertThat(firstOrderItem.getProductName()).isEqualTo("product name");
+        assertThat(firstOrderItem.getPrice()).isEqualTo("5.50");
         assertThat(firstOrderItem.getProductId()).isEqualTo("1");
         assertThat(firstOrderItem.getQuantity()).isEqualTo(5);
     }
