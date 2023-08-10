@@ -15,21 +15,27 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "order")
+@Table(name = "`order`")
 public class OrderPo {
     @Id
     @GeneratedValue(generator = "system-uuid")
     @GenericGenerator(name = "system-uuid", strategy = "uuid")
+    @Column(name = "id")
     private String id;
 
+    @Column(name = "customer_id")
     private String customerId;
 
+    @Column(name = "total_price")
     private String totalPrice;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "status")
     private OrderStatus status;
 
+    @Column(name = "create_time")
     private LocalDateTime createTime = LocalDateTime.now();
 
+    @Column(name = "update_time")
     private LocalDateTime updateTime = LocalDateTime.now();
 }

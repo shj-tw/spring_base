@@ -18,7 +18,10 @@ public interface OrderDtoMapper {
 
     OrderItem toOrderItemDto(OrderItemDto orderItem);
 
-    @Mapping(target = "orderItems", source = "orderRequest.orderItemDtos")
+    @Mappings({
+            @Mapping(target = "orderItems", source = "orderRequest.orderItems"),
+            @Mapping(target = "status", constant = "CREATED")
+    })
     Order toOrderDo(OrderRequest orderRequest, String customerId);
 
 

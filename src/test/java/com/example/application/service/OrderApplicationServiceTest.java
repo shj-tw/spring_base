@@ -34,10 +34,9 @@ class OrderApplicationServiceTest {
 
     @Test
     void should_save_order_with_one_item() {
-        OrderRequest orderDetail = new OrderRequest();
-        OrderItemDto orderItemDto = new OrderItemDto("1", "product name", 1);
-        orderDetail.setOrderItemDtos(List.of(orderItemDto));
-        orderDetail.setTotalPrice("10.00");
+        OrderRequest orderDetail = getMockOrderRequest();
+        Product product = getMockProduct();
+        when(productRepository.findById("1")).thenReturn(product);
         when(orderRepository.save(any())).thenAnswer(invocation -> invocation.getArgument(0));
 
         OrderDto order = orderApplicationService.createOrder(orderDetail, "1");

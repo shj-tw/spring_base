@@ -17,6 +17,10 @@ import static org.mapstruct.factory.Mappers.getMapper;
 public interface OrderDataMapper {
     OrderDataMapper mapper = getMapper(OrderDataMapper.class);
 
+    @Mappings({
+            @Mapping(target = "createTime", ignore = true),
+            @Mapping(target = "id", ignore = true)
+    })
     OrderPo toOrderPo(Order order);
 
     @Mapping(target = "orderId", source = "orderId")

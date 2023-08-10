@@ -43,7 +43,6 @@ class OrderDomainRepositoryTest {
         when(jpaOrderRepository.save(any(OrderPo.class))).thenAnswer(invocation -> invocation.getArgument(0));
         Order savedOrder = orderDomainRepository.save(order);
 
-        assertThat(savedOrder.getId()).isEqualTo("1");
         assertThat(savedOrder.getStatus()).isEqualTo(OrderStatus.CREATED);
         assertThat(savedOrder.getCustomerId()).isEqualTo("2");
         assertThat(savedOrder.getTotalPrice()).isEqualTo("12.34");
@@ -51,7 +50,6 @@ class OrderDomainRepositoryTest {
         assertThat(savedOrder.getOrderItems()).hasSize(1);
         OrderItem firstOrderItem = savedOrder.getOrderItems().get(0);
         assertThat(firstOrderItem.getId()).isEqualTo("3");
-        assertThat(firstOrderItem.getOrderId()).isEqualTo("1");
         assertThat(firstOrderItem.getProductName()).isEqualTo("product name");
         assertThat(firstOrderItem.getPrice()).isEqualTo("5.50");
         assertThat(firstOrderItem.getProductId()).isEqualTo("1");
