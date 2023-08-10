@@ -92,6 +92,18 @@ class OrderApplicationServiceTest {
                 .isInstanceOf(BusinessException.class);
     }
 
+    @Test
+    void should_throw_exception_when_price_does_not_match() {
+        OrderRequest orderDetail = getMockOrderRequest();
+        orderDetail.setTotalPrice("9.50");
+        Product product = getMockProduct();
+        when(productRepository.findById("1")).thenReturn(product);
+        when(orderRepository.save(any())).thenAnswer(invocation -> invocation.getArgument(0));
+
+        assertThatThrownBy(() -> orderApplicationService.createOrder(orderDetail, "1"))
+                .isInstanceOf(BusinessException.class);
+    }
+
     private Product getMockProduct() {
         Product product = new Product();
         product.setId("1");
