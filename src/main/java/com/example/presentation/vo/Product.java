@@ -1,6 +1,5 @@
 package com.example.presentation.vo;
 
-import jdk.nashorn.internal.objects.annotations.Setter;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
