@@ -25,7 +25,7 @@ public class OrderDomainRepository implements OrderRepository {
         OrderPo savedOrder = jpaOrderRepository.save(mapper.toOrderPo(order));
         List<OrderItemPo> orderItemPos =
                 jpaOrderItemRepository.saveAll(order.getOrderItems().stream()
-                        .map(item -> mapper.toOrderItem(item, order.getId()))
+                        .map(item -> mapper.toOrderItemPo(item, savedOrder.getId()))
                         .collect(Collectors.toList()));
 
         return mapper.toOrderDo(savedOrder, orderItemPos);

@@ -37,17 +37,7 @@ class OrderDomainRepositoryTest {
 
     @Test
     void should_save_order_items_and_order() {
-        Order order = Order.builder()
-                .id("1")
-                .customerId("2")
-                .status("Created")
-                .totalPrice("12.34")
-                .orderItems(List.of(OrderItem.builder()
-                        .id("3")
-                        .productId("1")
-                        .quantity(5)
-                        .build()))
-                .build();
+        Order order = getMockOrder();
         when(jpaOrderItemRepository.saveAll(anyIterable())).thenAnswer(invocation -> invocation.getArgument(0));
         when(jpaOrderRepository.save(any(OrderPo.class))).thenAnswer(invocation -> invocation.getArgument(0));
         Order savedOrder = orderDomainRepository.save(order);
@@ -63,5 +53,23 @@ class OrderDomainRepositoryTest {
         assertThat(firstOrderItem.getOrderId()).isEqualTo("1");
         assertThat(firstOrderItem.getProductId()).isEqualTo("1");
         assertThat(firstOrderItem.getQuantity()).isEqualTo(5);
+    }
+
+    private Order getMockOrder() {
+        return Order.builder()
+                .id("1")
+                .customerId("2")
+                .status("Created")
+                .totalPrice("12.34")
+                .orderItems(List.of(getMockOrderItem()))
+                .build();
+    }
+
+    private OrderItem getMockOrderItem() {
+        return OrderItem.builder()
+                .id("3")
+                .productId("1")
+                .quantity(5)
+                .build();
     }
 }

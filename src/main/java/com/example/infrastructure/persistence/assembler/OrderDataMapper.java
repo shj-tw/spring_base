@@ -20,7 +20,7 @@ public interface OrderDataMapper {
     OrderPo toOrderPo(Order order);
 
     @Mapping(target = "orderId", source = "orderId")
-    OrderItemPo toOrderItem(OrderItem orderItem, String orderId);
+    OrderItemPo toOrderItemPo(OrderItem orderItem, String orderId);
 
     @Mappings({
             @Mapping(target = "id", source = "savedOrder.id"),
