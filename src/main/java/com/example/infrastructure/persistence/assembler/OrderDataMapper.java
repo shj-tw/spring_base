@@ -19,9 +19,8 @@ public interface OrderDataMapper {
 
     OrderPo toOrderPo(Order order);
 
-    OrderItemPo toOrderItem(OrderItem orderItem);
-
-    List<OrderItemPo> toOrderItems(List<OrderItem> orderItems);
+    @Mapping(target = "orderId", source = "orderId")
+    OrderItemPo toOrderItem(OrderItem orderItem, String orderId);
 
     @Mappings({
             @Mapping(target = "id", source = "savedOrder.id"),

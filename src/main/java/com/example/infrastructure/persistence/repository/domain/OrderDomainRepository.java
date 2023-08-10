@@ -11,6 +11,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 @AllArgsConstructor
@@ -22,7 +23,10 @@ public class OrderDomainRepository implements OrderRepository {
     @Override
     public Order save(Order order) {
         OrderPo savedOrder = jpaOrderRepository.save(mapper.toOrderPo(order));
-        List<OrderItemPo> orderItemPos = jpaOrderItemRepository.saveAll(mapper.toOrderItems(order.getOrderItems()));
+        List<OrderItemPo> orderItemPos =
+                jpaOrderItemRepository.saveAll(order.getOrderItems().stream()
+                        .map(item -> mapper.toOrderItem(item, order.getId()))
+                        .collect(Collectors.toList()));
 
         return mapper.toOrderDo(savedOrder, orderItemPos);
     }

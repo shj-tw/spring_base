@@ -44,7 +44,6 @@ class OrderDomainRepositoryTest {
                 .totalPrice("12.34")
                 .orderItems(List.of(OrderItem.builder()
                         .id("3")
-                        .orderId("1")
                         .productId("1")
                         .quantity(5)
                         .build()))
